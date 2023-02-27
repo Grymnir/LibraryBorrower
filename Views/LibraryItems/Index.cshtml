@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<LibraryBorrower.Models.LibraryItem>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Library";
 }
 
 <h1>Library Manager</h1>
@@ -53,6 +53,7 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
+                @(string.Concat(item.Title.Split(' ').Select(w => w.First())).ToUpper())
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Author)

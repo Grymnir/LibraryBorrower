@@ -63,7 +63,7 @@ namespace LibraryBorrower.Controllers
 
             //var checkDuplicate = _context.category.Where(x => x.CategoryName == category.CategoryName);
 
-            if (!_context.category.Any(ye => ye.CategoryName == category.CategoryName))
+            if (!_context.category.Any(c => c.CategoryName == category.CategoryName))
             {
                 if (ModelState.IsValid)
                 {
