@@ -12,7 +12,7 @@ namespace LibraryBorrower.Models
     {
         public int ID { get; set; }
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         public string CategoryName { get; set; }
         public ICollection<LibraryItem> items { get; set; }
     }
