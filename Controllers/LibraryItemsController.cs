@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LibraryBorrower.Models;
+using Microsoft.Extensions.Primitives;
 
 namespace LibraryBorrower.Controllers
 {
@@ -25,17 +26,17 @@ namespace LibraryBorrower.Controllers
         //Category and I can load as you can see in the CategoryName in the table, but the data is not shown.
         //You can search for types and filter them. If you want to get back to see everything, just 
         //dont have any values in the textbox and do filter. 
-        public async Task<IActionResult> Index(string SearchString, string goBack)
+        public async Task<IActionResult> Index(string SearchString)
         {
             var typeSearch = from m in _context.libraryItem select m;
 
-            if(!string.IsNullOrEmpty(SearchString))
+            if (!string.IsNullOrEmpty(SearchString))
             {
                 typeSearch = typeSearch.Where(s => s.Type.Contains(SearchString));
                 return View(typeSearch);
             }
-            
-            return View (await _context.libraryItem.OrderBy(m => m.categoryID.CategoryName).ToListAsync());
+
+            return View(await _context.libraryItem.OrderBy(m => m.categoryID.CategoryName).ToListAsync());
             //return View();
         }
 
